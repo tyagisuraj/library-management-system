@@ -148,24 +148,24 @@ GROUP BY S.name;
 
 ## Most issued book
 
-```sql
+
 SELECT B.title, COUNT(I.book_id) AS issue_count
 FROM Book B
 JOIN Issue I ON B.book_id = I.book_id
 GROUP BY B.title
 ORDER BY issue_count DESC
 LIMIT 1;
-```
+
 
 ## Librarian handling most issues
 
-```sql
+
 SELECT L.name, COUNT(I.issue_id) AS total_issues
 FROM Librarian L
 JOIN Issue I ON L.librarian_id = I.librarian_id
 GROUP BY L.name
 ORDER BY total_issues DESC;
-```
+
 
 ---
  SELECT * FROM Student;
