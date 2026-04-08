@@ -22,82 +22,82 @@
 
 ## 1. Display all students
 
-```sql
+
 SELECT * FROM Student;
-```
+
 
 ## 2. Display students from BTech course
 
-```sql
+
 SELECT * FROM Student
 WHERE course = 'BTech';
-```
+
 
 ## 3. Display all books with quantity greater than 3
 
-```sql
+
 SELECT * FROM Book
 WHERE quantity > 3;
-```
+
 
 ## 4. Display student names with issued book IDs
 
-```sql
+
 SELECT S.name, I.book_id
 FROM Student S
 JOIN Issue I ON S.student_id = I.student_id;
-```
+
 
 ## 5. Display student names with book titles issued
 
-```sql
+
 SELECT S.name, B.title
 FROM Student S
 JOIN Issue I ON S.student_id = I.student_id
 JOIN Book B ON I.book_id = B.book_id;
-```
+
 
 ## 6. Display students who have NOT issued any book
 
-```sql
+
 SELECT name
 FROM Student
 WHERE student_id NOT IN (SELECT student_id FROM Issue);
-```
+
 
 ## 7. Display all issued books with issue and return dates
 
-```sql
+
 SELECT B.title, I.issue_date, I.return_date
 FROM Book B
 JOIN Issue I ON B.book_id = I.book_id;
-```
+
 
 ## 8. Display students who paid fine (days_late > 0)
 
-```sql
+
 SELECT DISTINCT S.name
 FROM Student S
 JOIN Issue I ON S.student_id = I.student_id
 JOIN Fine F ON I.issue_id = F.issue_id
 WHERE F.days_late > 0;
-```
+
 
 ## 9. Display total fine collected
 
-```sql
+
 SELECT SUM(amount) AS total_fine
 FROM Fine;
-```
+
 
 ## 10. Display number of books issued per student
 
-```sql
+
 SELECT S.name, COUNT(I.issue_id) AS total_books
 FROM Student S
 JOIN Issue I ON S.student_id = I.student_id
 GROUP BY S.name;
-```
+
 
 ---
 
